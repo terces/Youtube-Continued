@@ -34,9 +34,6 @@
 		#bt_next {
 			float: right;
 		}
-		.ninja { 
-			display: none;
-		}
 	</style>
 </head>
 
@@ -47,12 +44,14 @@
 			<div id="player_sec">
 				<fieldset>
 					<legend>Tube Cont.d</legend>
+					<!-- Search Bar -->
 					<div id="search">
 						<form id="qform" action="#" method="post" >
 							<input type="text" name="qs" />
 							<input type="submit" class="ninja"/>
 						</form>
 					</div>
+					<!-- Real Video container -->
 					<div id="video_content" class="ninja">
 						<div id="ytframe">
 							<p>Change your browser ... </p>
@@ -65,18 +64,21 @@
 		</div>
 		<div class="clear"></div>
 		<div class="grid_2">
+			<!-- Configuration Content-->
 			<div id="content">
 				<p>here would be something needs configure.</p>
 			</div>
+			<!-- Played list Container -->
 			<div id="playlist" class="ninja">
 				<p>playlist</p>
 			</div>
-			<div id="relatedlist">
+			<!-- Related list temporary setting up -->
+			<div id="relatedlist" class="">
 			</div>
 		</div>
 		<div class="grid_1">
 			<div id="menu">
-				<button id="bt_hide">Hide</button>
+				<!--<button id="bt_hide">Hide</button>-->
 				<button id="bt_mode">Mode</button>
 				<button id="bt_history">History</button>
 				<button id="bt_about">About</button>

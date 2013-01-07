@@ -48,7 +48,7 @@ function stateController( event) {
 
 function retrivedVideoId( url) {
 	var vid = url.split( 'v=')[1];
-	if( vid.indexOf( '&'))
+	if( vid.indexOf( '&') > 0)
 		vid = vid.substring( 0, vid.indexOf( '&'));
 	return vid;
 }
@@ -63,7 +63,7 @@ function recordListener( evt) {
 	}
 	else {
 		start = true;
-		pos.append( '<p>' + vid + '<p>');
+		pos.append( '<span class="tracker">' + vid + '<span><br />');
 		quarter = false;
 		clearInterval( curTimer);
 		nextVideo();
@@ -94,31 +94,37 @@ function relatedListListener( evt) {
 function makeRelatedList( ytvid) {
 
 	// retrive gdata
-	$('#relatedlist').html(''); 
-	$.getJSON( 'https://gdata.youtube.com/feeds/api/videos/' + ytvid + '/related', { 
-		v: 2,
-		'max-results': 5,
-		format: 5,
-		alt: 'jsonc'
-		}, function(d) {
-			for( var i = 0; i < 5; ++i) {
-				var cvid = d.data.items[i].id;
-				$('#relatedlist').append( '<span class="candidate">' + cvid + '</span><br />');
-				$.getJSON( 'https://gdata.youtube.com/feeds/api/videos/' + cvid + '/related', { 
-					v: 2,
-					'max-results': 2,
-					format: 5,
-					alt: 'jsonc'
-					}, function(d) {
-						for( var i = 0; i < 2; ++i)
+	// TODO: make by mode
+	//if( mode == 'random') {
+		$('#relatedlist').html(''); 
+		$.getJSON( 'https://gdata.youtube.com/feeds/api/videos/' + ytvid + '/related', { 
+				v: 2,
+				'max-results': 5,
+				format: 5,
+				alt: 'jsonc'
+				}, function(d) {
+					for( var i = 0; i < 5; ++i) {
+						var cvid = d.data.items[i].id;
+						$('#relatedlist').append( '<span class="candidate">' + cvid + '</span><br />');
+						$.getJSON( 'https://gdata.youtube.com/feeds/api/videos/' + cvid + '/related', { 
+							v: 2,
+							'max-results': 2,
+							format: 5,
+							alt: 'jsonc'
+							}, function(d) {
+								for( var i = 0; i < 2; ++i)
 							$('#relatedlist').append( '<span class="candidate">' + d.data.items[i].id + '</span><br />');
+							});
+					}
 				});
-			}
-	});
+	//}
+	//else { // mode == 'smart'
+		// TODO: keyword extract with score borad
+	//}
 
 }
 
 function errorWhat( eno) {
-	alert( eno);
+	alert( eno.data);
 	return ;
 }
