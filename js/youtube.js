@@ -15,8 +15,9 @@ function realYouTubeIframeAPIDeploy( ytvid) {
 		height: '225',
 		videoId: ytvid,
 		playerVars: {
+			'version' : 3,
 			'controls': 2,
-			'enablejsapi': 1,
+			'enablejsapi' : 1,
 			'autoplay': ( ( start == true) ? 1 : 0)
 		},
 		suggestedQuality: 'large',
@@ -29,7 +30,8 @@ function realYouTubeIframeAPIDeploy( ytvid) {
 			'onError'
 			'onApiChange'
 			*/
-			'onStateChange': stateController
+			'onStateChange': stateController,
+			'onError': errorWhat
 		}
 	});
 }
@@ -45,7 +47,10 @@ function stateController( event) {
 }
 
 function retrivedVideoId( url) {
-	return ( url.split( 'v=')[1]);
+	var vid = url.split( 'v=')[1];
+	if( vid.indexOf( '&'))
+		vid = vid.substring( 0, vid.indexOf( '&'));
+	return vid;
 }
 
 function recordListener( evt) {
@@ -90,7 +95,7 @@ function makeRelatedList( ytvid) {
 
 	// retrive gdata
 	$('#relatedlist').html(''); 
-	$.get( 'https://gdata.youtube.com/feeds/api/videos/' + ytvid + '/related', { 
+	$.getJSON( 'https://gdata.youtube.com/feeds/api/videos/' + ytvid + '/related', { 
 		v: 2,
 		'max-results': 5,
 		format: 5,
@@ -99,9 +104,9 @@ function makeRelatedList( ytvid) {
 			for( var i = 0; i < 5; ++i) {
 				var cvid = d.data.items[i].id;
 				$('#relatedlist').append( '<span class="candidate">' + cvid + '</span><br />');
-				$.get( 'https://gdata.youtube.com/feeds/api/videos/' + cvid + '/related', { 
+				$.getJSON( 'https://gdata.youtube.com/feeds/api/videos/' + cvid + '/related', { 
 					v: 2,
-					'max-results': 5,
+					'max-results': 2,
 					format: 5,
 					alt: 'jsonc'
 					}, function(d) {
@@ -111,4 +116,9 @@ function makeRelatedList( ytvid) {
 			}
 	});
 
+}
+
+function errorWhat( eno) {
+	alert( eno);
+	return ;
 }
