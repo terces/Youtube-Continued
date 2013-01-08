@@ -11,3 +11,5 @@
 		Delete Feature: disalbe 'Hide' button
 	01:02
 		'Mode' button trigger 'mode chagne' from using radiobox to checkbox.
+	16:06
+		Change 960gs to bootstrap

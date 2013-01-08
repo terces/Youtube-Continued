@@ -4,6 +4,7 @@
 <head>
     <title>Tube Cont'd.</title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- jquery google api -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
 	<!-- jqueryui google api -->
@@ -11,11 +12,10 @@
 	<!-- youtube iframe api -->
 	<script src="js/youtube.js" type="text/javascript"></script>
 	<script src="js/continued.js" type="text/javascript"></script>
-	<!-- 960 grid system start-->
-	<link rel="stylesheet" type="text/css" media="all" href="css/reset.css" />
-	<link rel="stylesheet" type="text/css" media="all" href="css/text.css" />
-	<link rel="stylesheet" type="text/css" media="all" href="css/960.css" />
-	<!-- 960 grid system end-->
+	<!-- bootstrap system start-->
+	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+	<!-- bootstrap system end-->
 	<style type="text/css">
 		fieldset {
 			border: black 2px dashed;
@@ -39,49 +39,52 @@
 
 <body>
 
-	<div class="container_12">
-		<div class="grid_6 prefix_3 suffix_1">
-			<div id="player_sec">
-				<fieldset>
-					<legend>Tube Cont.d</legend>
-					<!-- Search Bar -->
-					<div id="search">
-						<form id="qform" action="#" method="post" >
-							<input type="text" name="qs" />
-							<input type="submit" class="ninja"/>
-						</form>
-					</div>
-					<!-- Real Video container -->
-					<div id="video_content" class="ninja">
-						<div id="ytframe">
-							<p>Change your browser ... </p>
+	<div class="container">
+		<div class="row">
+			<div class="span6 offset3">
+				<div id="player_sec">
+					<fieldset>
+						<legend>Tube Cont.d</legend>
+						<!-- Search Bar -->
+						<div id="search">
+							<form id="qform" action="#" method="post" >
+								<input type="text" name="qs" />
+								<input type="submit" class="ninja"/>
+							</form>
 						</div>
-						<button id="bt_loop">Loop</button>
-						<button id="bt_next">Next</button>
+						<!-- Real Video container -->
+						<div id="video_content" class="ninja">
+							<div id="ytframe">
+								<p>Change your browser ... </p>
+							</div>
+							<button id="bt_loop">Loop</button>
+							<button id="bt_next">Next</button>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+			<div id="configuration" class="span3">
+				<div class="row">
+					<div id="detaillist" class="span2">
+						<!-- Configuration Content-->
+						<div id="content">
+							<p>here would be something needs configure.</p>
+						</div>
+						<!-- Played list Container -->
+						<div id="playlist" class="ninja">
+							<p>playlist</p>
+						</div>
+						<!-- Related list temporary setting up -->
+						<div id="relatedlist" class="ninja">
+						</div>
 					</div>
-				</fieldset>
-			</div>
-		</div>
-		<div class="clear"></div>
-		<div class="grid_2">
-			<!-- Configuration Content-->
-			<div id="content">
-				<p>here would be something needs configure.</p>
-			</div>
-			<!-- Played list Container -->
-			<div id="playlist" class="ninja">
-				<p>playlist</p>
-			</div>
-			<!-- Related list temporary setting up -->
-			<div id="relatedlist" class="">
-			</div>
-		</div>
-		<div class="grid_1">
-			<div id="menu">
-				<!--<button id="bt_hide">Hide</button>-->
-				<button id="bt_mode">Mode</button>
-				<button id="bt_history">History</button>
-				<button id="bt_about">About</button>
+					<div id="menu" class="span1">
+						<!--<button id="bt_hide">Hide</button>-->
+						<button id="bt_mode">Mode</button>
+						<button id="bt_history">History</button>
+						<button id="bt_about">About</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

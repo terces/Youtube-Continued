@@ -4,8 +4,8 @@ var mode = 'random';									// select mode controller, by default, random
 
 function globalInit() {
 	start = false;
-	if( $('#bt_loop').html == 'Shuffle')
-		$('#bt_loop').click();
+	ytloop = false;
+	$('#bt_loop').html( 'Loop');
 	// rebuild a youtube iframe
 	if( player) {
 		player.destroy();
@@ -118,6 +118,9 @@ function init() {
 		$('#playlist').hide();
 		$('#content').hide().html('<p>Hi! I am terces</p>').fadeIn();
 	});
+
+	// Menu bar
+
 }
 
 function nextVideo() {

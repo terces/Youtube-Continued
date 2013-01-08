@@ -63,7 +63,8 @@ function recordListener( evt) {
 	}
 	else {
 		start = true;
-		pos.append( '<span class="tracker">' + vid + '<span><br />');
+		if( evt.target.getCurrentTime() +1 >= evt.target.getDuration())
+			pos.append( '<span class="tracker">' + vid + '<span><br />');
 		quarter = false;
 		clearInterval( curTimer);
 		nextVideo();
