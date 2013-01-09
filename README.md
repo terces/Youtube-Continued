@@ -24,3 +24,6 @@
 		Modified Feature: 'Mode' button, combine "Random", "Smart", and "Loop" mode for choosing, and move to "video_command" div
 		Modified Feature: 'History' button, there has no function just now, and move to "video_command" div
 		Modified Function: change the 'changeTitle' call procedure and always using 'player' variable to get video id
+20120110.terces
+	00:12
+		Adjust the footer position
