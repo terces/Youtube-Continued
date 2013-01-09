@@ -65,20 +65,48 @@ function retrivedVideoId( url) {
 }
 
 function recordListener( evt) {
-	var pos = $('#playlist');
-	var vid = retrivedVideoId( player.getVideoUrl());
+	var pos = $('.carousel-inner');
+	var ytvid = retrivedVideoId( player.getVideoUrl());
 	
 	if( ytloop == true) {
 		player.seekTo( 0, true);
 		player.playVideo();
 	}
 	else {
+		/* template
+		   <!--
+		   <div class="item">
+			   <img src="assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+			   <div class="carousel-caption">
+				   <h4>First Thumbnail label</h4>
+				   <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+				   <span class="tracker">videoId</span>
+			   </div>
+		   </div>
+		   -->
+	   */
+		var content = '<div class="item">';
+		$.getJSON( 'https://gdata.youtube.com/feeds/api/videos/' + ytvid, { 
+				v: 2,
+				format: 5,
+				alt: 'jsonc'
+			}, function(d) {
+					content += '<img src="' + d.data.thumbnail.hqDefault + '" alt="">';
+					content += '<div class="carousel-carousel">';
+					content += '<h4>' + d.data.title + '</h4>';
+					content += '<p>' + d.data.description + '</p>';
+					content += '<a href="#">Remove</a>';
+					content += '<span class="tracker" style="display: none">' + ytvid + '</span>';
+					content += '</div>';
+					content += '</div>';
+		}).complete( function() {
+			if( evt.target.getCurrentTime() +1 >= evt.target.getDuration())
+				pos.append( content);
+			quarter = false;
+			clearInterval( curTimer);
+			nextVideo();
+		});
 		start = true;
-		if( evt.target.getCurrentTime() +1 >= evt.target.getDuration())
-			pos.append( '<span class="tracker">' + vid + '</span><br />');
-		quarter = false;
-		clearInterval( curTimer);
-		nextVideo();
 	}
 }
 
@@ -107,7 +135,10 @@ function makeRelatedList( ytvid) {
 
 	// retrive gdata
 	// TODO: make by mode
-	//if( mode == 'random') {
+	//if(  mode == 'smart') { 
+		// TODO: keyword extract with score borad
+	//}
+	//else { // ( mode == 'random')
 		$('#relatedlist').html(''); 
 		$.getJSON( 'https://gdata.youtube.com/feeds/api/videos/' + ytvid + '/related', { 
 				v: 2,
@@ -129,9 +160,6 @@ function makeRelatedList( ytvid) {
 							});
 					}
 				});
-	//}
-	//else { // mode == 'smart'
-		// TODO: keyword extract with score borad
 	//}
 
 }

@@ -27,3 +27,5 @@
 20120110.terces
 	00:12
 		Adjust the footer position
+	02:04
+		Bug: the 'History' button could not make a carsouel view, testing 

@@ -6,7 +6,6 @@ var mode = 'random';									// select mode controller, by default, random
 function globalInit() {
 	start = false;
 	ytloop = false;
-	$('#bt_loop').html( 'Loop');
 	// rebuild a youtube iframe
 	if( player) {
 		player.destroy();
@@ -60,7 +59,7 @@ function init() {
 		},
 		delay: {
 			show: 500,
-		hide: 250
+			hide: 250
 		}
 	});
 	// Mode selector
@@ -79,6 +78,7 @@ function init() {
 		else {															// default to random
 			mode = 'random';
 		}
+		$('#bt_mode').click();
 	});
 
 	// History button event: click
@@ -87,7 +87,9 @@ function init() {
 		placement: 'bottom',
 		trigger: 'click',
 		title: 'History Viewer',
-		content: 'Lots of history',
+		content: function() {
+			return "lots of history";
+		},
 		delay: {
 			show: 500,
 			hide: 250
@@ -101,49 +103,9 @@ function init() {
 
 
 	// global setting up
-    // confiuration menu 
-
-	// Mode radio box event: click
-	/*
-	$('#bt_mode').bind( 'click', function() {
-		$('#playlist').hide();
-		$('#content').hide().html(
-			// intelligence mode, use key word extraction 
-			'<input id="mode_box" type="checkbox" ' + ( ( mode == 'random') ? '' : 'checked') + '/> Smart Chioce<br />' 
-		).fadeIn();
-	});
-	*/
-
-    // Check playlist button event: click
-	/*
-	$('#bt_history').bind( 'click', function() {
-		$('#playlist').hide();
-		$('#content').hide().html('<p>History playlist</p>').fadeIn( 'slow', function() {
-			$('#playlist').fadeIn();
-		});
-	});
-	*/
-	// Show about button event: click
-	/*
-	$('#bt_about').bind( 'click', function() {
-		$('#playlist').hide();
-		$('#content').hide().html('<p>Hi! I am terces</p>').fadeIn();
-	});
-    */
+	$('#playlist').carousel();
 }
-/*
-function prevVideo() {
-	// previous vidoe choose from history list
-	var prevlist = $('.tracker :last');
-	if( prevlist.length == 0) {
-		alert('There is no previous video in your history list, keep listening?');
-	}
-	else {
-		player.loadVideoById( prevlist[0].innerHTML, 0, "large");
-		prevlist[0].parentNode.removeChild( prevlist[0]);
-	}
-}
-*/
+
 function nextVideo() {
 	// skip current video
 	var clist = $('.candidate');
