@@ -1,3 +1,4 @@
+Intelligence mode
 --A initial function for each global variable--
 # 20130108.terces: done
 --merge the configuration--
