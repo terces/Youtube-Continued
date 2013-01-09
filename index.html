@@ -16,9 +16,16 @@
 	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
 	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
 	<!-- bootstrap system end-->
+	<script> 
+	</script>
 	<style type="text/css">
+		#wrapper {
+			margin-top: 100px;
+		}
 		fieldset {
-			border: black 2px dashed;
+			border-width: 10px 15px 15px 10px;
+			border-style: solid;
+			border-color: black red red black;
 			padding: 10px 15px; 
 			text-align: center;
 			border-radius: 25px;
@@ -28,63 +35,83 @@
 			font-family: "Bauhaus 93", fantasy;
 			font-size: 4em;
 		}
-		#bt_loop {
-			float: left;
+		#video_command {
+			margin-top: 10px;
 		}
-		#bt_next {
-			float: right;
+		#configuration {
+			margin-top: 40px;
+		}
+		#footer {
+			/* stiky bottom */
+			bottom: 0;
+			height: 3em;
+			position: absolute;
+			text-align: center;
+			color: gray;
 		}
 	</style>
 </head>
 
 <body>
 
-	<div class="container">
-		<div class="row">
-			<div class="span6 offset3">
-				<div id="player_sec">
-					<fieldset>
-						<legend>Tube Cont.d</legend>
-						<!-- Search Bar -->
-						<div id="search">
-							<form id="qform" action="#" method="post" >
-								<input type="text" name="qs" />
-								<input type="submit" class="ninja"/>
-							</form>
-						</div>
-						<!-- Real Video container -->
-						<div id="video_content" class="ninja">
-							<div id="ytframe">
-								<p>Change your browser ... </p>
+	<div id="wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="span6 offset3">
+					<div id="player_sec">
+						<fieldset>
+							<legend>Tube Cont.d</legend>
+							<!-- Search Bar -->
+							<div id="search">
+								<form id="qform" action="#" method="post" >
+									<input type="text" name="qs" placeholder="Search here!" />
+									<input type="submit" class="ninja"/>
+								</form>
 							</div>
-							<button id="bt_loop">Loop</button>
-							<button id="bt_next">Next</button>
+							<!-- Real Video container -->
+							<div id="video_content" class="ninja">
+								<div id="yttitle"></div>
+								<div id="ytframe">
+									<p>Change your browser ... </p>
+								</div>
+								<div id="video_command">
+									<!--<button id="bt_prev">Prev</button>-->
+									<!--<button id="bt_loop">Loop</button>-->
+									<button id="bt_mode">Mode</button>
+									<button id="bt_history">History</button>
+									<button id="bt_next">Next</button>
+									<div id="cmd_content"></div>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<div id="configuration" class="span3">
+					<div class="row">
+						<div id="detaillist" class="span2">
+							<!-- Configuration Content-->
+							<div id="content">
+							</div>
+							<!-- Played list Container -->
+							<div id="playlist" class="ninja">
+							</div>
+							<!-- Related list temporary setting up -->
+							<div id="relatedlist" class="ninja">
+							</div>
 						</div>
-					</fieldset>
+						<div id="menu" class="span1">
+							<!--<button id="bt_hide">Hide</button>-->
+							<!--<button id="bt_mode">Mode</button>
+							<button id="bt_history">History</button>-->
+							<!--<button id="bt_about">About</button>-->
+						</div>
+					</div>
 				</div>
 			</div>
-			<div id="configuration" class="span3">
-				<div class="row">
-					<div id="detaillist" class="span2">
-						<!-- Configuration Content-->
-						<div id="content">
-							<p>here would be something needs configure.</p>
-						</div>
-						<!-- Played list Container -->
-						<div id="playlist" class="ninja">
-							<p>playlist</p>
-						</div>
-						<!-- Related list temporary setting up -->
-						<div id="relatedlist" class="ninja">
-						</div>
-					</div>
-					<div id="menu" class="span1">
-						<!--<button id="bt_hide">Hide</button>-->
-						<button id="bt_mode">Mode</button>
-						<button id="bt_history">History</button>
-						<button id="bt_about">About</button>
-					</div>
-				</div>
+			<div class="row">
+			<div id="footer" class="span12">
+				Hi, I am terces, this site is powered by javascript!
+			</div>
 			</div>
 		</div>
 	</div>

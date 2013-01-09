@@ -1,4 +1,5 @@
 $(document).ready( init);
+
 var ytloop = false;										// Loop mode controller
 var mode = 'random';									// select mode controller, by default, random
 
@@ -37,6 +38,7 @@ function init() {
 						$('#relatedlist').append( '<span class="candidate">' + d.data.items[i].id + '</span><br />');
 				}
 				realYouTubeIframeAPIDeploy( u);         // real deploy a youtube video
+				changeTitle( u);                        // retrived and set video name 
 		}).complete( function() {
 			$('#video_content').slideDown( 'slow');     // show the video container
 		});
@@ -44,19 +46,51 @@ function init() {
 	});
 
 	// current video related
-
-	// Loop button event: click
-	$('#bt_loop').bind( 'click', function() {
-		var s = $('#bt_loop').html();					// check current mode Loop/Shuffle
-		// Loop mode
-		if( s == 'Loop') {
-			ytloop = true;
-			$('#bt_loop').html('Shuffle');
+	// Mode button event: click
+	$('#bt_mode').popover({
+		html: true,
+		placement: 'bottom',
+		trigger: 'click',
+		title: 'Mode Selector',
+		content: function () {
+			var r = '<input class="mode_radio" name="mode_choose" type="radio" value="random" ' + ( ( mode != 'random') ? '' : 'checked') + '/> Random Chioce<br />' 
+			var s = '<input class="mode_radio" name="mode_choose" type="radio" value="smart"' + ( ( mode != 'smart') ? '' : 'checked') + '/> Smart Chioce<br />' 
+			var l = '<input class="mode_radio" name="mode_choose" type="radio" value="loop"' + ( ( mode != 'loop') ? '' : 'checked') + '/> Loop Chioce<br />' 
+			return r+s+l; 
+		},
+		delay: {
+			show: 500,
+		hide: 250
 		}
-		// Shuffle mode
-		else { // s == Shuffle
-			ytloop = false;
-			$('#bt_loop').html('Loop');
+	});
+	// Mode selector
+	$('.mode_radio').live( 'click', function() {
+		ytloop = false;
+		if( $(this).is(':checked') && $(this).val() == 'random') {		// default, random mode
+			mode = 'random';
+		}
+		else if( $(this).is(':checked') && $(this).val() == 'smart') {	// intelligence mode, use key word extraction   
+			mode = 'smart';
+		}
+		else if( $(this).is(':checked') && $(this).val() == 'loop') {	// loop mode
+			mode = 'loop';
+			ytloop = true;
+		}
+		else {															// default to random
+			mode = 'random';
+		}
+	});
+
+	// History button event: click
+	$('#bt_history').popover({
+		html: true,
+		placement: 'bottom',
+		trigger: 'click',
+		title: 'History Viewer',
+		content: 'Lots of history',
+		delay: {
+			show: 500,
+			hide: 250
 		}
 	});
 
@@ -64,32 +98,13 @@ function init() {
 	$('#bt_next').bind( 'click', function() {
 		nextVideo();
 	});
-	// global setting up
 
-	/*
-	// Hide video button event: click
-	$('#bt_hide').bind( 'click', function () {
-		$('#playlist').hide();
-		var s = $('#bt_hide').html();
-		if( s == 'Hide') {
-			$('iframe').each(
-			function( index, elem) {
-				elem.setAttribute('height', '25');
-			}
-			);
-			$('#bt_hide').html('Show');
-		}
-		else {
-			$('iframe').each(
-			function( index, elem) {
-				elem.setAttribute('height', '225');
-			}
-			);
-			$('#bt_hide').html('Hide');
-		}
-	});
-	*/
+
+	// global setting up
+    // confiuration menu 
+
 	// Mode radio box event: click
+	/*
 	$('#bt_mode').bind( 'click', function() {
 		$('#playlist').hide();
 		$('#content').hide().html(
@@ -97,32 +112,38 @@ function init() {
 			'<input id="mode_box" type="checkbox" ' + ( ( mode == 'random') ? '' : 'checked') + '/> Smart Chioce<br />' 
 		).fadeIn();
 	});
-
-	$('#mode_box').live( 'click', function() {
-		if( $(this).is(':checked'))
-			mode = 'smart';
-		else 
-			mode = 'random';
-	});
+	*/
 
     // Check playlist button event: click
+	/*
 	$('#bt_history').bind( 'click', function() {
 		$('#playlist').hide();
 		$('#content').hide().html('<p>History playlist</p>').fadeIn( 'slow', function() {
 			$('#playlist').fadeIn();
 		});
 	});
-
+	*/
 	// Show about button event: click
+	/*
 	$('#bt_about').bind( 'click', function() {
 		$('#playlist').hide();
 		$('#content').hide().html('<p>Hi! I am terces</p>').fadeIn();
 	});
-
-	// Menu bar
-
+    */
 }
-
+/*
+function prevVideo() {
+	// previous vidoe choose from history list
+	var prevlist = $('.tracker :last');
+	if( prevlist.length == 0) {
+		alert('There is no previous video in your history list, keep listening?');
+	}
+	else {
+		player.loadVideoById( prevlist[0].innerHTML, 0, "large");
+		prevlist[0].parentNode.removeChild( prevlist[0]);
+	}
+}
+*/
 function nextVideo() {
 	// skip current video
 	var clist = $('.candidate');
@@ -131,9 +152,6 @@ function nextVideo() {
 	// candidate had beend ran out of using
 	if( clist.length == 0) {
 		alert( "No more candidate... search another?");
-		if( player) 
-			player.pauseVideo();
-		return ;
 	}
 	// chose a new video
 	// TODO: select by mode
@@ -141,11 +159,12 @@ function nextVideo() {
 		//if( mode == 'random') { 
 		r = Math.floor( Math.random() * clist.length); // use random to choose one video 
 		player.loadVideoById( clist[r].innerHTML, 0, "large");
+		changeTitle( clist[r].innerHTML);
+		clist[r].parentNode.removeChild( clist[r]);
 		//}
 		//else { // mode == 'smart'
 		//	player.loadVideoById( clist[0].innerHTML, 0, "large");
 		//}
 	}
-	clist[r].parentNode.removeChild( clist[r]);
 	return ;
 }

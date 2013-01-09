@@ -11,8 +11,8 @@ function onYouTubeIframeAPIReady() {
 }
 function realYouTubeIframeAPIDeploy( ytvid) {
 	player = new YT.Player('ytframe', {
-		width: '410',
-		height: '225',
+		width: 410,
+		height: 225,
 		videoId: ytvid,
 		playerVars: {
 			'version' : 3,
@@ -37,6 +37,17 @@ function realYouTubeIframeAPIDeploy( ytvid) {
 }
 
 var quarter = false;
+function changeTitle( ytvid) {
+
+	$.getJSON( 'https://gdata.youtube.com/feeds/api/videos/' + ytvid, { 
+		v: 2,
+		format: 5,
+		alt: 'jsonc'
+			}, function(d) {
+				$('#yttitle').html( '<h4>' + d.data.title + '</h4>');
+	});
+}
+
 function stateController( event) {
 	if( event.data == YT.PlayerState.ENDED) {
 		recordListener( event);
@@ -58,13 +69,13 @@ function recordListener( evt) {
 	var vid = retrivedVideoId( player.getVideoUrl());
 	
 	if( ytloop == true) {
-		player.seekTo( 0, false);
+		player.seekTo( 0, true);
 		player.playVideo();
 	}
 	else {
 		start = true;
 		if( evt.target.getCurrentTime() +1 >= evt.target.getDuration())
-			pos.append( '<span class="tracker">' + vid + '<span><br />');
+			pos.append( '<span class="tracker">' + vid + '</span><br />');
 		quarter = false;
 		clearInterval( curTimer);
 		nextVideo();
