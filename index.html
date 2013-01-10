@@ -41,8 +41,8 @@
 		#configuration {
 			margin-top: 40px;
 		}
+		/* stiky bottom */
 		#footer {
-			/* stiky bottom */
 			bottom: 0;
 			height: 3em;
 			position: absolute;
@@ -80,10 +80,10 @@
 								<div id="ytframe">
 									<p>Change your browser ... </p>
 								</div>
-								<div id="video_command">
-									<button id="bt_mode">Mode</button>
-									<button id="bt_history">History</button>
-									<button id="bt_next">Good Luck</button>
+								<div id="video_command" class="btn-group">
+									<button id="bt_mode" class="btn btn-success">Mode</button>
+									<button id="bt_history" class="btn btn-warning">History</button>
+									<button id="bt_next" class="btn btn-danger">Good Luck</button>
 								</div>
 							</div>
 						</fieldset>
@@ -110,13 +110,13 @@
 									</div>
 								</div>
 								<div class="modal-footer">
-									<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-									<button class="btn btn-primary">Save changes</button>
+									<button id="bt_save" class="btn btn-success">Save this playlist</button>
+									<button class="btn btn-inverse" data-dismiss="modal" aria-hidden="true">Close</button>
 								</div>
 							</div>
 						</div>
 						<!-- Related list temporary setting up -->
-						<div id="relatedlist" class="span1">
+						<div id="relatedlist" class="span1 ninja">
 						</div>
 					</div>
 				</div>
@@ -127,10 +127,8 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 
-	</div>
 
 </body>
 </html>

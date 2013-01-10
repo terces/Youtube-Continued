@@ -103,7 +103,10 @@ function recordListener( evt) {
 					content += '<h4>' + d.data.title + '</h4>';
 					content += '<p>Time: ' + tstr + '</p>';
 					content += '<p>View count: ' + d.data.viewCount + '</p>';
-					content += '<a href="#">Remove</a>';
+					content += '<div class="btn-group">';
+					content += '<button class="bt_play btn btn-success">Play</button>';
+					content += '<button class="bt_remove btn btn-danger">Remove</button>';
+					content += '</div>';
 					content += '<span class="tracker" style="display: none">' + ytvid + '</span>';
 					content += '</div>';
 					content += '</div>';
@@ -118,7 +121,7 @@ function recordListener( evt) {
 			start = true;
 		}
 		else {
-			var r = $('.modal-body p')[0];
+			var r = $('.modal-body :contains("No")')[0];
 			r.parentNode.removeChild( r);
 			$('.carousel').carousel({
 				interval: 2000

@@ -4,12 +4,13 @@ var ytloop = false;										// Loop mode controller
 var mode = 'random';									// select mode controller, by default, random
 
 function globalInit() {
-	if( start !=false ) {
-		if( confirm("Clear the history list?")) {
-			$('.item').each( function() {
-				$(this).remove();
-			});
-		}
+	if( $('.item').length != 0 && confirm("Clear the history list?") == true) {
+		$('.item').each( function() {
+			$(this).remove();
+		});
+		if( $('.modal-body :contains("No")').length == 0) 
+			$('.modal-body').append('<p>No items</p>');
+		$('#playlist').hide();
 	}
 	start = false;
 	ytloop = false;
@@ -99,6 +100,15 @@ function init() {
 		nextVideo();
 	});
 
+	// Play button event: click
+	$('.bt_play').live( 'click', function() {
+		player.loadVideoById( $(this).parent()
+	});
+	// Remove button event: click
+	$('.bt_remove').live( 'click', function() {
+		$(this).parent().parent().parent().slideDown('slow').remove();
+		$('#playlist').carousel('next');
+	});
 }
 
 function nextVideo() {

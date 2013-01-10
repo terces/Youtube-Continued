@@ -35,3 +35,9 @@
 	22:24
 		Modified Feature: 'History' button would lauch a modal and show the played list in a carousel
 		Add Feature: When make a re-search, it would make a confrim for clean the played list or not
+20120111.terces
+	01:45
+		Apply the bootstrap css style
+		Add Feature: in the played list, add 'Play' button to play the played video, and 'Remove' button to remove the video in played list
+	02:21
+		Add Feature: 'Save the playlist' button set up, but no function
