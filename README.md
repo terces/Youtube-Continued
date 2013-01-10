@@ -41,3 +41,5 @@
 		Add Feature: in the played list, add 'Play' button to play the played video, and 'Remove' button to remove the video in played list
 	02:21
 		Add Feature: 'Save the playlist' button set up, but no function
+	04:01
+		Modified Feature: 'History' content would works when the carousel items have larger than two, or it would be buggy.

@@ -94,7 +94,6 @@ function init() {
 	$('#bt_history').bind( 'click', function() {
 		$('#historyModal').modal();
 	});
-
 	// Next button event: click
 	$('#bt_next').bind( 'click', function() {
 		nextVideo();
@@ -102,12 +101,11 @@ function init() {
 
 	// Play button event: click
 	$('.bt_play').live( 'click', function() {
-		player.loadVideoById( $(this).parent()
+		player.loadVideoById( $(this).parent().parent().children('.tracker').html());
 	});
 	// Remove button event: click
 	$('.bt_remove').live( 'click', function() {
 		$(this).parent().parent().parent().slideDown('slow').remove();
-		$('#playlist').carousel('next');
 	});
 }
 

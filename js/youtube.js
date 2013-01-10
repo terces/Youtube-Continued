@@ -121,12 +121,11 @@ function recordListener( evt) {
 			start = true;
 		}
 		else {
-			var r = $('.modal-body :contains("No")')[0];
-			r.parentNode.removeChild( r);
-			$('.carousel').carousel({
-				interval: 2000
-			});
-			$('#playlist').show();
+			if( $('.modal-body :contains("No items")').length != 0) {				// first time to show carousel
+				$('.modal-body :contains("No items")').remove();
+				$('#playlist').carousel();
+				$('#playlist').show();
+			}
 		}
 	}
 }
