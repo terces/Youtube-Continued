@@ -43,3 +43,6 @@
 		Add Feature: 'Save the playlist' button set up, but no function
 	04:01
 		Modified Feature: 'History' content would works when the carousel items have larger than two, or it would be buggy.
+	04:09
+		Modified title: YouTube continued
+		Modified legend: YT cont.d (maybe add a player icon between "YT" and "cont.d"?)
