@@ -4,6 +4,13 @@ var ytloop = false;										// Loop mode controller
 var mode = 'random';									// select mode controller, by default, random
 
 function globalInit() {
+	if( start !=false ) {
+		if( confirm("Clear the history list?")) {
+			$('.item').each( function() {
+				$(this).remove();
+			});
+		}
+	}
 	start = false;
 	ytloop = false;
 	// rebuild a youtube iframe
@@ -82,18 +89,9 @@ function init() {
 	});
 
 	// History button event: click
-	$('#bt_history').popover({
-		html: true,
-		placement: 'bottom',
-		trigger: 'click',
-		title: 'History Viewer',
-		content: function() {
-			return "lots of history";
-		},
-		delay: {
-			show: 500,
-			hide: 250
-		}
+	//$('#playlist').carousel();
+	$('#bt_history').bind( 'click', function() {
+		$('#historyModal').modal();
 	});
 
 	// Next button event: click
@@ -101,9 +99,6 @@ function init() {
 		nextVideo();
 	});
 
-
-	// global setting up
-	//$('#playlist').carousel();
 }
 
 function nextVideo() {

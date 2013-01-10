@@ -65,9 +65,8 @@ function retrivedVideoId( url) {
 }
 
 function recordListener( evt) {
-	var pos = $('.carousel-inner');
 	var ytvid = retrivedVideoId( player.getVideoUrl());
-	
+
 	if( ytloop == true) {
 		player.seekTo( 0, true);
 		player.playVideo();
@@ -85,7 +84,8 @@ function recordListener( evt) {
 		   </div>
 		   -->
 	   */
-		var content = '<div class="item">';
+		var pos = $('.carousel-inner');
+		var content = ( start == false) ? '<div class="item active">' : '<div class="item">';
 		$.getJSON( 'https://gdata.youtube.com/feeds/api/videos/' + ytvid, { 
 				v: 2,
 				format: 5,
@@ -99,7 +99,7 @@ function recordListener( evt) {
 						( ( mm.toString().length == 1 ) ? ( '0'+mm.toString()) : mm.toString()) + ':' + 
 						( ( ss.toString().length == 1 ) ? ( '0'+ss.toString()) : ss.toString());
 					content += '<img src="' + d.data.thumbnail.hqDefault + '" alt="">';
-					content += '<div class="carousel-carousel">';
+					content += '<div class="carousel-caption">';
 					content += '<h4>' + d.data.title + '</h4>';
 					content += '<p>Time: ' + tstr + '</p>';
 					content += '<p>View count: ' + d.data.viewCount + '</p>';
@@ -114,7 +114,17 @@ function recordListener( evt) {
 			clearInterval( curTimer);
 			nextVideo();
 		});
-		start = true;
+		if( start == false) {
+			start = true;
+		}
+		else {
+			var r = $('.modal-body p')[0];
+			r.parentNode.removeChild( r);
+			$('.carousel').carousel({
+				interval: 2000
+			});
+			$('#playlist').show();
+		}
 	}
 }
 

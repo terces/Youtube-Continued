@@ -32,3 +32,6 @@
 	14:41
 		Modified Feature: change video description to duration and viewcount
 		Modified Feature: remove 'History' carousel
+	22:24
+		Modified Feature: 'History' button would lauch a modal and show the played list in a carousel
+		Add Feature: When make a re-search, it would make a confrim for clean the played list or not
