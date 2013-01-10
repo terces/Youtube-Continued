@@ -103,7 +103,7 @@ function init() {
 
 
 	// global setting up
-	$('#playlist').carousel();
+	//$('#playlist').carousel();
 }
 
 function nextVideo() {

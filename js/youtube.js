@@ -91,10 +91,18 @@ function recordListener( evt) {
 				format: 5,
 				alt: 'jsonc'
 			}, function(d) {
+					var tt = d.data.duration;
+					var hh = Math.floor( tt / 3600);
+					var mm = Math.floor( tt % 3600 / 60);
+					var ss = Math.floor( tt % 60);
+					var tstr = ( ( hh.toString().length == 1 ) ? ( '0'+hh.toString()) : hh.toString()) + ':' + 
+						( ( mm.toString().length == 1 ) ? ( '0'+mm.toString()) : mm.toString()) + ':' + 
+						( ( ss.toString().length == 1 ) ? ( '0'+ss.toString()) : ss.toString());
 					content += '<img src="' + d.data.thumbnail.hqDefault + '" alt="">';
 					content += '<div class="carousel-carousel">';
 					content += '<h4>' + d.data.title + '</h4>';
-					content += '<p>' + d.data.description + '</p>';
+					content += '<p>Time: ' + tstr + '</p>';
+					content += '<p>View count: ' + d.data.viewCount + '</p>';
 					content += '<a href="#">Remove</a>';
 					content += '<span class="tracker" style="display: none">' + ytvid + '</span>';
 					content += '</div>';

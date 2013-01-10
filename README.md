@@ -29,3 +29,6 @@
 		Adjust the footer position
 	02:04
 		Bug: the 'History' button could not make a carsouel view, testing 
+	14:41
+		Modified Feature: change video description to duration and viewcount
+		Modified Feature: remove 'History' carousel
