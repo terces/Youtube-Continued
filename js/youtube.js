@@ -18,7 +18,8 @@ function realYouTubeIframeAPIDeploy( ytvid) {
 			'version' : 3,
 			'controls': 2,
 			'enablejsapi' : 1,
-			'autoplay': ( ( start == true) ? 1 : 0)
+			'autoplay': ( ( start == true) ? 1 : 0),
+			'wmode': "opaque"
 		},
 		suggestedQuality: 'large',
 		events: {

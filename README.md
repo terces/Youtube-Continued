@@ -46,3 +46,6 @@
 	04:09
 		Modified title: YouTube continued
 		Modified legend: YT cont.d (maybe add a player icon between "YT" and "cont.d"?)
+	16:38
+		Add Feature: add a "play" icon with youtube style in title
+		Modified Feature: 'History' button bug fixed (when carousel only has 1 item)

@@ -93,6 +93,17 @@ function init() {
 	//$('#playlist').carousel();
 	$('#bt_history').bind( 'click', function() {
 		$('#historyModal').modal();
+		$('#playlist').each(function() {
+			if($(this).find('.carousel-inner .item').length > 1){
+				$(this).carousel({interval: 10000})
+			.hover( function () {$(this).carousel('pause')}, 
+				function () {$(this).carousel('cycle')});
+				$(this).find('.carousel-control').show();
+			}
+			else{
+				$(this).find('.carousel-control').hide();
+			}
+		});
 	});
 	// Next button event: click
 	$('#bt_next').bind( 'click', function() {

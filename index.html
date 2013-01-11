@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>YouTube Cont'd.</title>
+    <title>YouTube Continued</title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- jquery google api -->
@@ -16,8 +16,6 @@
 	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
 	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
 	<!-- bootstrap system end-->
-	<script> 
-	</script>
 	<style type="text/css">
 		#wrapper {
 			margin-top: 100px;
@@ -55,6 +53,18 @@
 		.carousel .item > img {
 			display: inline-block;
 		}
+		#iplay {
+			margin-top: -10px;
+			border-radius: 50%/11%;
+			background-image: -webkit-linear-gradient(bottom, rgb(109, 2, 2) 22%, rgb(201, 0, 0) 61%);
+			background-image: -moz-linear-gradient(bottom, rgb(109, 2, 2) 22%, rgb(201, 0, 0) 61%);
+			background-image: -o-linear-gradient(bottom, rgb(109, 2, 2) 22%, rgb(201, 0, 0) 61%);
+			background-image: -ms-linear-gradient(bottom, rgb(109, 2, 2) 22%, rgb(201, 0, 0) 61%);
+			background-image: linear-gradient(bottom, #6D0202 22%, rgb(201, 0, 0) 61%);
+		}
+		#iplay:before {
+			border-radius: 5%/50%;
+		}
 	</style>
 </head>
 
@@ -66,7 +76,7 @@
 				<div class="span6 offset3">
 					<div id="player_sec">
 						<fieldset>
-							<legend>Y<font color="red">T</font> Cont.d</legend>
+							<legend>Y<font color="red">T</font><span id="iplay" class="btn btn-danger"><i class="icon-play"></i></span>Cont.d</legend>
 							<!-- Search Bar -->
 							<div id="search">
 								<form id="qform" action="#" method="post" >
