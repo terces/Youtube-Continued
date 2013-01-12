@@ -95,7 +95,7 @@ function init() {
 		$('#historyModal').modal();
 		$('#playlist').each(function() {
 			if($(this).find('.carousel-inner .item').length > 1){
-				$(this).carousel({interval: 10000})
+				$(this).carousel({interval: 5000})
 			.hover( function () {$(this).carousel('pause')}, 
 				function () {$(this).carousel('cycle')});
 				$(this).find('.carousel-control').show();
@@ -117,6 +117,7 @@ function init() {
 	// Remove button event: click
 	$('.bt_remove').live( 'click', function() {
 		$(this).parent().parent().parent().slideDown('slow').remove();
+		$('#playlist').carousel(0);
 	});
 }
 

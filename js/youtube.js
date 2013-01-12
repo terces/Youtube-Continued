@@ -86,7 +86,7 @@ function recordListener( evt) {
 		   -->
 	   */
 		var pos = $('.carousel-inner');
-		var content = ( start == false) ? '<div class="item active">' : '<div class="item">';
+		var content = ( $('.item').length == 0 ) ? '<div class="item active">' : '<div class="item">';
 		$.getJSON( 'https://gdata.youtube.com/feeds/api/videos/' + ytvid, { 
 				v: 2,
 				format: 5,
@@ -99,7 +99,7 @@ function recordListener( evt) {
 					var tstr = ( ( hh.toString().length == 1 ) ? ( '0'+hh.toString()) : hh.toString()) + ':' + 
 						( ( mm.toString().length == 1 ) ? ( '0'+mm.toString()) : mm.toString()) + ':' + 
 						( ( ss.toString().length == 1 ) ? ( '0'+ss.toString()) : ss.toString());
-					content += '<img src="' + d.data.thumbnail.hqDefault + '" alt="">';
+					content += '<img src="' + d.data.thumbnail.hqDefault + '" height="360" width="480" alt="">';
 					content += '<div class="carousel-caption">';
 					content += '<h4>' + d.data.title + '</h4>';
 					content += '<p>Time: ' + tstr + '</p>';
@@ -117,15 +117,17 @@ function recordListener( evt) {
 			quarter = false;
 			clearInterval( curTimer);
 			nextVideo();
+			$('#playlist').show();
+			if( $('.modal-body :contains("No items")').length == 1) {				// first time to show carousel
+				$('.modal-body :contains("No items")').remove();
+			}
 		});
 		if( start == false) {
 			start = true;
 		}
 		else {
-			if( $('.modal-body :contains("No items")').length != 0) {				// first time to show carousel
-				$('.modal-body :contains("No items")').remove();
+			if( $('.item').length >= 1) {				// first time to show carousel
 				$('#playlist').carousel();
-				$('#playlist').show();
 			}
 		}
 	}

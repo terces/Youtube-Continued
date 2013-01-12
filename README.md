@@ -49,3 +49,5 @@
 	16:38
 		Add Feature: add a "play" icon with youtube style in title
 		Modified Feature: 'History' button bug fixed (when carousel only has 1 item)
+	unknown
+		Bug fixed: 'History' carousel function bug fixed
