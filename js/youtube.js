@@ -165,8 +165,8 @@ function makeRelatedList( ytvid) {
 		$('#relatedlist').html(''); 
 		$.getJSON( 'https://gdata.youtube.com/feeds/api/videos/' + ytvid + '/related', { 
 				v: 2,
-				'max-results': 5,
-				format: 10,
+				'max-results': 10,
+				format: 5,
 				alt: 'jsonc'
 				}, function(d) {
 					for( var i = 0; i < 10; ++i) {
