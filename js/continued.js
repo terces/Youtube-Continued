@@ -112,7 +112,9 @@ function init() {
 
 	// Play button event: click
 	$('.bt_play').live( 'click', function() {
-		player.loadVideoById( $(this).parent().parent().children('.tracker').html());
+		var vid = $(this).parent().parent().children('.tracker').html();
+		player.loadVideoById( vid);
+		changeTitle( vid);
 	});
 	// Remove button event: click
 	$('.bt_remove').live( 'click', function() {

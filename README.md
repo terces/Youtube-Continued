@@ -1,11 +1,11 @@
-20120105.terces 
+20130105.terces 
 	Start work.
-20120107.terces
+20130107.terces
 	01:02 
 		The first version.
 	23:12
 		First stable, no style sheet
-20120108.terces
+20130108.terces
 	00:23
 		Add Feature: the 'Next' button could run with random mode
 		Delete Feature: disalbe 'Hide' button
@@ -13,7 +13,7 @@
 		'Mode' button trigger 'mode chagne' from using radiobox to checkbox.
 	16:06
 		Change 960gs to bootstrap
-20120109.terces
+20130109.terces
 	21:50
 		Add Feature: the 'Prev' button
 		Change the border style from dash to solid with youtube color
@@ -24,7 +24,7 @@
 		Modified Feature: 'Mode' button, combine "Random", "Smart", and "Loop" mode for choosing, and move to "video_command" div
 		Modified Feature: 'History' button, there has no function just now, and move to "video_command" div
 		Modified Function: change the 'changeTitle' call procedure and always using 'player' variable to get video id
-20120110.terces
+20130110.terces
 	00:12
 		Adjust the footer position
 	02:04
@@ -35,7 +35,7 @@
 	22:24
 		Modified Feature: 'History' button would lauch a modal and show the played list in a carousel
 		Add Feature: When make a re-search, it would make a confrim for clean the played list or not
-20120111.terces
+20130111.terces
 	01:45
 		Apply the bootstrap css style
 		Add Feature: in the played list, add 'Play' button to play the played video, and 'Remove' button to remove the video in played list
@@ -51,3 +51,7 @@
 		Modified Feature: 'History' button bug fixed (when carousel only has 1 item)
 	unknown
 		Bug fixed: 'History' carousel function bug fixed
+20130114.terces
+	21:50
+		Bug fixed: When change video by 'History', it could change the title now.
+		Modified feature: change the related choose solution, from 2-way related to 1-way related
