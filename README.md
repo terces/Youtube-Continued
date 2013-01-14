@@ -55,4 +55,5 @@
 	21:50
 		Bug fixed: When change video by 'History', it could change the title now.
 		Modified feature: change the related choose solution, from 2-way related to 1-way related
+	22:50
 		Fatal error fixed: the format and max-results parameter got wrong, but fix
