@@ -166,12 +166,13 @@ function makeRelatedList( ytvid) {
 		$.getJSON( 'https://gdata.youtube.com/feeds/api/videos/' + ytvid + '/related', { 
 				v: 2,
 				'max-results': 5,
-				format: 5,
+				format: 10,
 				alt: 'jsonc'
 				}, function(d) {
-					for( var i = 0; i < 5; ++i) {
+					for( var i = 0; i < 10; ++i) {
 						var cvid = d.data.items[i].id;
 						$('#relatedlist').append( '<span class="candidate">' + cvid + '</span><br />');
+						/*
 						$.getJSON( 'https://gdata.youtube.com/feeds/api/videos/' + cvid + '/related', { 
 							v: 2,
 							'max-results': 2,
@@ -181,6 +182,7 @@ function makeRelatedList( ytvid) {
 								for( var i = 0; i < 2; ++i)
 							$('#relatedlist').append( '<span class="candidate">' + d.data.items[i].id + '</span><br />');
 							});
+						*/
 					}
 				});
 	//}
