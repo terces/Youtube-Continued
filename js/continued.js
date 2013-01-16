@@ -107,7 +107,9 @@ function init() {
 	});
 	// Next button event: click
 	$('#bt_next').bind( 'click', function() {
+		var ytvid = retrivedVideoId( player.getVideoUrl());
 		nextVideo();
+		$('#nontracker').append( '<span class="nontracker">'+ytvid+'</span>');
 	});
 
 	// Play button event: click

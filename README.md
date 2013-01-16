@@ -60,3 +60,5 @@
 20130116.terces
 	11:34
 		Add Feature: Avoid the duplicate choice
+	13:07
+		Modified Feature: make random more smart
