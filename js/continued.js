@@ -60,9 +60,10 @@ function init() {
 		trigger: 'click',
 		title: 'Mode Selector',
 		content: function () {
-			var r = '<input class="mode_radio" name="mode_choose" type="radio" value="random" ' + ( ( mode != 'random') ? '' : 'checked') + '/> Random Chioce<br />' 
-			var s = '<input class="mode_radio" name="mode_choose" type="radio" value="smart"' + ( ( mode != 'smart') ? '' : 'checked') + '/> Smart Chioce<br />' 
-			var l = '<input class="mode_radio" name="mode_choose" type="radio" value="loop"' + ( ( mode != 'loop') ? '' : 'checked') + '/> Loop Chioce<br />' 
+			var r = '<input class="mode_radio" name="mode_choose" type="radio" value="random" ' + ( ( mode != 'random') ? '' : 'checked') + '/> Random Chioce<br />';
+			var s = '';
+			//var s = '<input class="mode_radio" name="mode_choose" type="radio" value="smart"' + ( ( mode != 'smart') ? '' : 'checked') + '/> Smart Chioce<br />' 
+			var l = '<input class="mode_radio" name="mode_choose" type="radio" value="loop"' + ( ( mode != 'loop') ? '' : 'checked') + '/> Loop Chioce<br />';
 			return r+s+l; 
 		},
 		delay: {
@@ -95,10 +96,13 @@ function init() {
 		$('#historyModal').modal();
 		$('#playlist').each(function() {
 			if($(this).find('.carousel-inner .item').length > 1){
-				$(this).carousel({interval: 5000})
+				$(this).carousel(0);
+				$(this).carousel('pause');
+				/*
 			.hover( function () {$(this).carousel('pause')}, 
 				function () {$(this).carousel('cycle')});
 				$(this).find('.carousel-control').show();
+				*/
 			}
 			else{
 				$(this).find('.carousel-control').hide();

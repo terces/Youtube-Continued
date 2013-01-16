@@ -62,3 +62,5 @@
 		Add Feature: Avoid the duplicate choice
 	13:07
 		Modified Feature: make random more smart
+	17:23
+		Modified Feature: make random more smart
