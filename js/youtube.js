@@ -165,12 +165,14 @@ function makeRelatedList( ytvid) {
 		$('#relatedlist').html(''); 
 		$.getJSON( 'https://gdata.youtube.com/feeds/api/videos/' + ytvid + '/related', { 
 				v: 2,
-				'max-results': 10,
+				'max-results': 20,
 				format: 5,
 				alt: 'jsonc'
 				}, function(d) {
-					for( var i = 0; i < 10; ++i) {
+					for( var i = 0; i < 20; ++i) {
 						var cvid = d.data.items[i].id;
+						if( $('.tracker:contains("'+cvid+'")').legnth == 1 )
+							continue;
 						$('#relatedlist').append( '<span class="candidate">' + cvid + '</span><br />');
 						/*
 						$.getJSON( 'https://gdata.youtube.com/feeds/api/videos/' + cvid + '/related', { 

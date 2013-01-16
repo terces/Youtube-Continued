@@ -57,3 +57,6 @@
 		Modified feature: change the related choose solution, from 2-way related to 1-way related
 	22:50
 		Fatal error fixed: the format and max-results parameter got wrong, but fix
+20130116.terces
+	11:34
+		Add Feature: Avoid the duplicate choice
