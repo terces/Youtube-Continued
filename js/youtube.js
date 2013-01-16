@@ -172,22 +172,21 @@ function makeRelatedList( ytvid) {
 				}, function(d) {
 					for( var i = 0; i < 20; ++i) {
 						var cvid = d.data.items[i].id;
-						if( $('.nontracker:contains("'+cvid+'")').legnth > 1 || $('.tracker:contains("'+cvid+'")').legnth == 1 )
-							continue;
 						if( element_cnt >= 15)
 							break;
-						element_cnt += 1;
+						if( $('.nontracker:contains("'+cvid+'")').legnth > 1 || $('.tracker:contains("'+cvid+'")').legnth == 1 )
+							continue;
 						$('#relatedlist').append( '<span class="candidate">' + cvid + '</span><br />');
+						element_cnt += 1;
 					}
-					var idx = 1;
-					var pidx = 0;
-					for( ; element_cnt < 16; idx = pidx + idx, pidx = idx) {
+					var idx, pidx;
+					for( idx = 1, pidx = 0; element_cnt < 15 || idx > 21 ; idx = pidx + idx, pidx = idx) {
 						var clist = $('.candidate');
 						for( var i = 0; i < clist.length; ++i) {
 							var cvid = clist[i].innerHTML;
 							$.getJSON( 'https://gdata.youtube.com/feeds/api/videos/' + cvid + '/related', { 
 								v: 2,
-								'max-results': 2,
+								'max-results': 25,
 								format: 5,
 								alt: 'jsonc'
 								}, function(d) {
@@ -199,6 +198,10 @@ function makeRelatedList( ytvid) {
 										element_cnt += 1;
 									}
 							});
+						}
+						if( i == clist.legnth) {
+							// no more related, give up
+							break;
 						}
 					}
 		});

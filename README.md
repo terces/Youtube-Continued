@@ -64,3 +64,5 @@
 		Modified Feature: make random more smart
 	17:23
 		Modified Feature: make random more smart
+	21:05
+		Fatal error fixed: the related coefficient bug would cause javascript engine hang up!

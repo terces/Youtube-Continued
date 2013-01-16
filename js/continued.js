@@ -101,8 +101,8 @@ function init() {
 				/*
 			.hover( function () {$(this).carousel('pause')}, 
 				function () {$(this).carousel('cycle')});
-				$(this).find('.carousel-control').show();
 				*/
+				$(this).find('.carousel-control').show();
 			}
 			else{
 				$(this).find('.carousel-control').hide();
