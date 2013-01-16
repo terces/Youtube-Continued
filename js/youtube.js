@@ -181,7 +181,7 @@ function makeRelatedList( ytvid) {
 					}
 					var idx = 1;
 					var pidx = 0;
-					for( ; element_cnt < 15; idx = pidx + idx, pidx = idx) {
+					for( ; element_cnt < 16; idx = pidx + idx, pidx = idx) {
 						var clist = $('.candidate');
 						for( var i = 0; i < clist.length; ++i) {
 							var cvid = clist[i].innerHTML;
