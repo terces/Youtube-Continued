@@ -127,7 +127,7 @@ function recordListener( evt) {
 		}
 		else {
 			if( $('.item').length >= 1) {				// first time to show carousel
-				$('#playlist').carousel();
+				$('#playlist').carousel({interval: false});
 			}
 		}
 	}

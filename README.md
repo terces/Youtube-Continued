@@ -66,3 +66,6 @@
 		Modified Feature: make random more smart
 	21:05
 		Fatal error fixed: the related coefficient bug would cause javascript engine hang up!
+20130122.terces
+	04:21
+		Modified Feature: stop the carousel by default

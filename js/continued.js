@@ -97,7 +97,6 @@ function init() {
 		$('#playlist').each(function() {
 			if($(this).find('.carousel-inner .item').length > 1){
 				$(this).carousel(0);
-				$(this).carousel('pause');
 				/*
 			.hover( function () {$(this).carousel('pause')}, 
 				function () {$(this).carousel('cycle')});
