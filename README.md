@@ -69,3 +69,6 @@
 20130122.terces
 	04:21
 		Modified Feature: stop the carousel by default
+20141114.terces
+	14:55
+		Make github page
