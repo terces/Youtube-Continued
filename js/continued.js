@@ -141,7 +141,7 @@ function nextVideo() {
 	// TODO: select by mode
 	else {
 		//if( mode == 'random') { 
-		r = Math.floor( Math.random() * clist.length); // use random to choose one video 
+		r = Math.floor( Math.random() * clist.length) > 9 ? Math.random() * 10 : r; // use random to choose one video 
 		player.loadVideoById( clist[r].innerHTML, 0, "large");
 		changeTitle( clist[r].innerHTML);
 		clist[r].parentNode.removeChild( clist[r]);
